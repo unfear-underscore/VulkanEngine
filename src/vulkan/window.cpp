@@ -12,6 +12,13 @@ eng::Window::~Window()
 	glfwTerminate();
 }
 
+void eng::Window::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface)
+{
+	if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
+		throw std::runtime_error("Failed to create window surface");
+	}
+}
+
 void eng::Window::initWindow()
 {
 	glfwInit();
