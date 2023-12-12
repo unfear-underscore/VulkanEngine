@@ -15,7 +15,12 @@ set(VULKAN_SDK_PATH "C:/VulkanSDK/1.3.268.0")
 include_directories(${VULKAN_SDK_PATH}/Include)
 
 # Add source to this project's executable.
-add_executable (VulkanEngine "VulkanEngine.cpp" "VulkanEngine.h")
+# Collect all .cpp and .h files in the src directory
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "src/*.h")
+
+# Create the executable using all collected source and header files
+add_executable(VulkanEngine ${SOURCES} ${HEADERS})
 
 # Link Vulkan library
 target_link_libraries(VulkanEngine ${VULKAN_SDK_PATH}/Lib/vulkan-1.lib)
