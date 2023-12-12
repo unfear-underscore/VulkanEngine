@@ -13,6 +13,6 @@ namespace eng {
 
 	private:
 		Window window{ 1280, 720, "Vulkan Engine" };
-		Pipeline pipeline{ ROOT_DIR_PATH + "shaders/simple.vert.spv", ROOT_DIR_PATH + "shaders/simple.frag.spv" };
+		Pipeline pipeline{ ROOT_DIR_PATH + "shaders/compiled/simple.vert.spv", ROOT_DIR_PATH + "shaders/compiled/simple.frag.spv" };
 	};
 }
