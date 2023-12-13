@@ -5,19 +5,31 @@
 #include <fstream>
 #include <stdexcept>
 #include <iostream>
+#include <cassert>
 
 #include "device.h"
 
 namespace eng {
 
 	struct PipelineConfig {
-
+		VkViewport viewport;
+		VkRect2D scissor;
+		VkPipelineViewportStateCreateInfo viewportInfo;
+		VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
+		VkPipelineRasterizationStateCreateInfo rasterizationInfo;
+		VkPipelineMultisampleStateCreateInfo multisampleInfo;
+		VkPipelineColorBlendAttachmentState colorBlendAttachment;
+		VkPipelineColorBlendStateCreateInfo colorBlendInfo;
+		VkPipelineDepthStencilStateCreateInfo depthStencilInfo;
+		VkPipelineLayout pipelineLayout = nullptr;
+		VkRenderPass renderPass = nullptr;
+		uint32_t subpass = 0;
 	};
 
 	class Pipeline {
 	public:
 		Pipeline(Device& device, const PipelineConfig& config, const std::string& vertFilePath, const std::string& fragFilePath);
-		~Pipeline() {};
+		~Pipeline();
 
 		Pipeline(const Pipeline&) = delete;
 		void operator=(const Pipeline&) = delete;
